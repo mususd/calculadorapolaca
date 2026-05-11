@@ -17,9 +17,9 @@ en notación postfix (polaca inversa).
 - Git y GitHub
 
 ## Estructura del Proyecto
-/docs -> documentación y UML
-/src -> código fuente
-/mockups -> diseños de interfaz
+- /docs -> documentación y UML
+- /src -> código fuente
+- /mockups -> diseños de interfaz
 
 ## Integrantes
 - Musus

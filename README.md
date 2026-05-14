@@ -91,18 +91,13 @@ Desarrollar una aplicación Android capaz de convertir y evaluar expresiones mat
 ```text
 com.progra3.myapplication
 │
-├── ui
-│    └── MainActivity.java
-│
-├── logic
-│    ├── ConversorPostfix.java
-│    └── EvaluadorPostFix.java
-│
-├── models
-│    ├── Nodo.java
-│    ├── NodoOperador.java
-│    ├── Pila.java
-│    └── PilaOperadores.java
+├── MainActivity.java
+├── ConversorPostfix.java
+├── EvaluadorPostFix.java
+├── Nodo.java
+├── NodoOperador.java
+├── Pila.java
+├── PilaOperadores.java
 ```
 
 ---

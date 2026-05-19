@@ -1,313 +1,85 @@
-# Calculadora Postfix e Infix – Programación III
+# README.md
 
-Aplicación Android desarrollada en Java que permite:
+# Calculadora Postfix
 
-- Convertir expresiones Infix a Postfix.
-- Evaluar expresiones Postfix.
-- Visualizar el funcionamiento interno de una pila dinámica.
-- Mostrar paso a paso las operaciones realizadas.
-- Implementar estructuras de datos utilizando listas enlazadas.
+Aplicación Android desarrollada en Java que implementa una calculadora postfix utilizando una estructura de datos tipo pila enlazada manual.
 
 ---
 
-# Descripción General
+# Características
 
-El proyecto consiste en el desarrollo de una aplicación Android capaz de:
-
-- Evaluar expresiones matemáticas en notación Postfix.
-- Convertir expresiones Infix a Postfix.
-- Mostrar el procedimiento paso a paso del uso de la pila.
-- Implementar pilas dinámicas utilizando listas enlazadas.
-- Validar errores matemáticos y sintácticos.
-
-La aplicación fue desarrollada en Java utilizando Android Studio.
-
----
-
-# FASE 1 – Análisis del Problema
-
-## Problema identificado
-
-Muchos estudiantes presentan dificultades para comprender:
-
-- El funcionamiento de las pilas.
-- La evaluación de expresiones postfix.
-- La conversión de expresiones infix a postfix.
-- El comportamiento LIFO (Last In, First Out).
-
-Por ello se desarrolló una aplicación interactiva que permita visualizar el proceso completo de conversión y evaluación.
+- Implementación manual de pila enlazada
+- Operaciones postfix
+- Interfaz gráfica estilo calculadora
+- Visualización de la pila en tiempo real
+- Operaciones soportadas:
+  - suma
+  - resta
+  - multiplicación
+  - división
+  - módulo
+  - potencia
 
 ---
 
-## Objetivo General
+# Estructura del proyecto
 
-Desarrollar una aplicación Android capaz de convertir y evaluar expresiones matemáticas utilizando pilas dinámicas implementadas manualmente.
+## Clases principales
 
----
+### `Nodo.java`
+Representa un nodo de la pila enlazada.
 
-## Objetivos Específicos
+### `Pila.java`
+Implementa la estructura de pila manual.
 
-- Implementar una pila dinámica usando listas enlazadas.
-- Convertir expresiones infix a postfix.
-- Evaluar expresiones postfix.
-- Mostrar paso a paso el funcionamiento interno de la pila.
-- Implementar manejo de errores matemáticos.
-- Crear una interfaz amigable para el usuario.
+### `EvaluadorPostFix.java`
+Realiza las operaciones matemáticas postfix.
 
----
-
-## Requerimientos Funcionales
-
-- Ingresar expresiones matemáticas.
-- Convertir expresiones infix a postfix.
-- Evaluar expresiones postfix.
-- Mostrar resultados.
-- Mostrar procedimiento paso a paso.
-- Limpiar la interfaz.
-- Soportar operadores:
-  - `+`
-  - `-`
-  - `*`
-  - `/`
-  - `^`
-  - `%`
+### `MainActivity.java`
+Controla la interfaz gráfica y eventos de botones.
 
 ---
 
-## Requerimientos No Funcionales
+# Funcionamiento
 
-- Interfaz intuitiva.
-- Código modular.
-- Respuesta rápida.
-- Manejo de excepciones.
-- Compatibilidad con Android.
+La calculadora trabaja utilizando el algoritmo LIFO (Last In First Out).
 
----
-
-# FASE 2 – Diseño del Sistema
-
-## Arquitectura del Proyecto
+## Ejemplo
 
 ```text
-com.progra3.myapplication
-│
-├── MainActivity.java
-├── ConversorPostfix.java
-├── EvaluadorPostFix.java
-├── Nodo.java
-├── NodoOperador.java
-├── Pila.java
-├── PilaOperadores.java
+5 ENTER
+3 ENTER
++
 ```
 
----
-
-## Clases del Proyecto
-
-| Clase | Función |
-|---|---|
-| MainActivity | Interfaz gráfica |
-| ConversorPostfix | Conversión infix → postfix |
-| EvaluadorPostFix | Evaluación postfix |
-| Pila | Pila dinámica numérica |
-| Nodo | Nodo numérico |
-| PilaOperadores | Pila dinámica de operadores |
-| NodoOperador | Nodo de operadores |
-
----
-
-## Diseño de Pilas
-
-Se implementaron pilas dinámicas utilizando listas enlazadas.
-
-### Características
-
-- Inserción dinámica.
-- Eliminación dinámica.
-- Manejo de tope.
-- No se utilizó `Stack` de Java.
-- Implementación manual de estructuras.
-
----
-
-# FASE 3 – Desarrollo del Sistema
-
-## Conversión Infix → Postfix
-
-La conversión fue implementada utilizando:
-
-- Prioridad de operadores.
-- Manejo de paréntesis.
-- Pila de operadores.
-
----
-
-## Prioridad de Operadores
-
-| Operador | Prioridad |
-|---|---|
-| `+ -` | 1 |
-| `* / %` | 2 |
-| `^` | 3 |
-
----
-
-## Ejemplo de Conversión
-
-### Entrada Infix
+Resultado:
 
 ```text
-(5+3)*2^2
+8
 ```
 
-### Salida Postfix
+Proceso interno:
 
-```text
-5 3 + 2 2 ^ *
-```
-
----
-
-## Evaluación Postfix
-
-El algoritmo realiza:
-
-1. Lectura de tokens.
-2. Inserción de números en pila.
-3. Extracción de operandos.
-4. Aplicación de operadores.
-5. Inserción de resultados parciales.
+1. Se inserta 5 en la pila
+2. Se inserta 3 en la pila
+3. Se extraen ambos valores
+4. Se realiza la suma
+5. El resultado vuelve a insertarse en la pila
 
 ---
 
-## Operadores Soportados
-
-| Operador | Descripción |
-|---|---|
-| `+` | Suma |
-| `-` | Resta |
-| `*` | Multiplicación |
-| `/` | División |
-| `%` | Módulo |
-| `^` | Potencia |
-
----
-
-## Visualización Paso a Paso
-
-La aplicación muestra:
-
-- Inserciones en pila.
-- Operaciones realizadas.
-- Resultados parciales.
-- Estado del tope.
-
----
-
-# FASE 4 – Pruebas del Sistema
-
-## Casos de Prueba
-
-| Expresión | Resultado |
-|---|---|
-| `5+3*2` | `11` |
-| `(5+3)*2` | `16` |
-| `10%3` | `1` |
-| `2^3` | `8` |
-| `(8+2)*5` | `50` |
-
----
-
-## Manejo de Errores
-
-Errores implementados:
-
-- División entre cero.
-- Módulo entre cero.
-- Expresión inválida.
-- Pila vacía.
-- Operador desconocido.
-- Expresión mal formada.
-
----
-
-# FASE 5 – Implementación de Interfaz
-
-## Características visuales
-
-- Tema oscuro.
-- Diseño moderno.
-- Botones interactivos.
-- Interfaz responsive.
-- Resultados visuales claros.
-
----
-
-## Ejemplos de Uso
-
-### Infix
-
-```text
-(5+3)*2
-```
-
-### Postfix
-
-```text
-5 3 + 2 *
-```
-
-Importante:
-
-- Infix se ingresa sin espacios.
-- Postfix se ingresa con espacios.
-
----
-
-# UML DEL SISTEMA
-
-El sistema fue modelado utilizando diagramas UML para representar:
-
-- Relaciones entre clases.
-- Responsabilidades.
-- Estructura de pilas dinámicas.
-- Flujo general del sistema.
-
----
-
-# FASE 6 – Conclusiones
-
-- Se implementó correctamente una pila dinámica usando listas enlazadas.
-- La aplicación convierte expresiones infix a postfix correctamente.
-- El evaluador postfix procesa operaciones matemáticas adecuadamente.
-- El sistema permite visualizar el comportamiento interno de la pila.
-- El proyecto demuestra la aplicación práctica de estructuras de datos en Android.
-
----
-
-# FASE 7 – Mejoras Futuras
-
-- Soporte para variables.
-- Historial de operaciones.
-- Funciones trigonométricas.
-- Mejoras visuales con Material Design.
-- Animaciones del comportamiento de la pila.
-- Soporte para más operadores matemáticos.
-
----
-
-# Tecnologías Utilizadas
+# Tecnologías utilizadas
 
 - Java
 - Android Studio
 - XML
-- Programación Orientada a Objetos
-- Estructuras de Datos
-- Pilas Dinámicas
 
-Integrantes:
-- Diego Musus
-- Wilder Canel
-- Luisa Carrillo
-- Hory Lopez
-- Horacio Bernal
+---
+
+# Integrantes
+
+- Musus
+- Horacio
+- Luisa
+- Wilder
+- Hory
